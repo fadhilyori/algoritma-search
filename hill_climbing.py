@@ -1,4 +1,4 @@
-def hill_climbing_search(graph: dict, start, goal):
+def hill_climbing_search(graph: dict, start: str, goal: str) -> (list, int):
     current_node = start
     path = [current_node]
     total_weight = 0
