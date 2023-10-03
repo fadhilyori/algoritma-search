@@ -40,7 +40,7 @@ def hill_climbing_search(graph: dict, start: str, goal: str) -> (list, int):
 
 
 if __name__ == '__main__':
-    print("Hill Climbing for graph")
+    print("Hill Climbing for Graph")
     graph_file_path = 'graph_json/soal_ppt.json'
 
     with open(graph_file_path) as gf:
