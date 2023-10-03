@@ -20,9 +20,10 @@ def generate_graph(gd: dict) -> Graph:
     return gn
 
 
-def draw_graph(file_path: str, output_file: str = "graph.png", save_to_file: bool = False):
+def draw_graph(file_path: str, output_file: str = "", save_to_file: bool = False):
 
-    output_file = "outputs/" + os.path.splitext(os.path.basename(file_path))[0] + ".png"
+    if output_file == "":
+        output_file = "outputs/" + os.path.splitext(os.path.basename(file_path))[0] + ".png"
 
     with open(file_path) as gf:
         graph_json = json.load(gf)
