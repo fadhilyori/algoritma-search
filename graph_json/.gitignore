@@ -1,2 +1,3 @@
-*.json
+*
+!.gitignore
 !soal_ppt.json

@@ -1,4 +1,6 @@
 import json
+import os.path
+
 import networkx as nx
 import matplotlib.pyplot as plt
 
@@ -18,15 +20,13 @@ def generate_graph(gd: dict) -> Graph:
     return gn
 
 
-if __name__ == '__main__':
-    print("Graph Node Visualiation")
-    graph_file_path: str = 'graph_json/soal_ppt.json'
+def draw_graph(file_path: str, output_file: str = "graph.png", save_to_file: bool = False):
 
-    with open(graph_file_path) as gf:
+    output_file = "outputs/" + os.path.splitext(os.path.basename(file_path))[0] + ".png"
+
+    with open(file_path) as gf:
         graph_json = json.load(gf)
 
-    start_node: str = graph_json["start"]
-    goal_node: str = graph_json["goal"]
     graph_dict: dict = graph_json["graph"]
 
     graph_net: Graph = generate_graph(graph_dict)
@@ -43,4 +43,17 @@ if __name__ == '__main__':
     ax.margins(0.08)
     plt.axis("off")
     plt.tight_layout()
+
+    if save_to_file:
+        plt.savefig(output_file)
+        print(f"Saved to {output_file}")
+        return
+
     plt.show()
+
+
+if __name__ == '__main__':
+    print("Graph Node Visualiation")
+    graph_file_path: str = 'graph_json/soal_ppt.json'
+
+    draw_graph(graph_file_path, save_to_file=True)
