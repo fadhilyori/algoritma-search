@@ -1,7 +1,7 @@
 import json
 
 
-def hill_climbing_search(graph: dict, start: str, goal: str) -> (list, int):
+def hill_climbing_search(graph_dict: dict, start: str, goal: str) -> (list, int):
     current_node = start
     previous_node = start
     path = [current_node]
@@ -10,7 +10,7 @@ def hill_climbing_search(graph: dict, start: str, goal: str) -> (list, int):
 
     while current_node != goal:
         print(f"#{iteration_count} Current path: {path}")
-        neighbors = graph.get(current_node)
+        neighbors = graph_dict.get(current_node)
 
         # Check if no more neighbors, then stop climbing
         if not neighbors:
@@ -41,14 +41,15 @@ def hill_climbing_search(graph: dict, start: str, goal: str) -> (list, int):
 
 if __name__ == '__main__':
     print("Hill Climbing for Graph")
-    graph_file_path = 'graph_json/soal_ppt.json'
+    graph_file_path: str = 'graph_json/soal_ppt.json'
 
     with open(graph_file_path) as gf:
         graph_json = json.load(gf)
 
-    start_node = graph_json["start"]
-    goal_node = graph_json["goal"]
-    graph = graph_json["graph"]
+    start_node: str = graph_json["start"]
+    goal_node: str = graph_json["goal"]
+    graph: dict = graph_json["graph"]
+
     solution_path, min_weight = hill_climbing_search(graph, start_node, goal_node)
 
     if solution_path[-1] == goal_node:
