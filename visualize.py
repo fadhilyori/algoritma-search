@@ -21,7 +21,6 @@ def generate_graph(gd: dict) -> Graph:
 
 
 def draw_graph(file_path: str, output_file: str = "", save_to_file: bool = False):
-
     if output_file == "":
         output_file = "outputs/" + os.path.splitext(os.path.basename(file_path))[0] + ".png"
 
